@@ -35,6 +35,7 @@
                 android:inputType="textEmailAddress"
                 android:background="@drawable/inputs"
                 android:padding="4dp"
+                android:drawableStart="@drawable/email"
 
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="17dp"
@@ -51,6 +52,7 @@
                 android:inputType="textPassword"
                 android:background="@drawable/inputs"
                 android:padding="4dp"
+                android:drawableStart="@drawable/password"
 
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="17dp"

@@ -30,7 +30,8 @@ import java.util.Set;
  * Use the {@link GroupFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GroupFragment extends Fragment {
+public class GroupFragment extends Fragment
+{
 
     private View groupFragmentView;
     private ListView list_View;
@@ -49,7 +50,8 @@ public class GroupFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public GroupFragment() {
+    public GroupFragment()
+    {
 
     }
 
@@ -72,9 +74,11 @@ public class GroupFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        if (getArguments() != null)
+        {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -121,7 +125,8 @@ public class GroupFragment extends Fragment {
 
     private void RetrieveAndDisplayGroups()
     {
-      GroupRef.addValueEventListener(new ValueEventListener() {
+      GroupRef.addValueEventListener(new ValueEventListener()
+      {
           @Override
           public void onDataChange(@NonNull DataSnapshot datasnapshot)
           {

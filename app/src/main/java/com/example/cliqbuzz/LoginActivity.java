@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity
 
 
         InitializeFields();
+
         NeedNewAccountLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity
             }
         });
 
+
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -57,7 +59,24 @@ public class LoginActivity extends AppCompatActivity
              AllowUserToLogin();
             }
         });
+
+
+
+        PhoneLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent phoneLoginIntent = new Intent (LoginActivity.this,PhoneLoginActivity.class);
+                startActivity(phoneLoginIntent);
+            }
+        });
+
+
+
+
     }
+
+
+
 
     private void AllowUserToLogin()
     {
