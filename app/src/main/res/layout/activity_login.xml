@@ -140,6 +140,23 @@
                 android:background="@drawable/button"
                 />
 
+            <TextView
+                android:id="@+id/Indian_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/phone_login_button"
+                android:text="INDIAN APP"
+
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textAlignment="center"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                />
+
 
 
 
