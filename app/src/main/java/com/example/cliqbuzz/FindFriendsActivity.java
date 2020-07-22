@@ -1,17 +1,17 @@
 package com.example.cliqbuzz;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -59,8 +59,8 @@ public class FindFriendsActivity extends AppCompatActivity
 
         FirebaseRecyclerOptions<Contacts> options =
                 new FirebaseRecyclerOptions.Builder<Contacts>()
-                .setQuery(UsersRef, Contacts.class)
-                .build();
+                        .setQuery(UsersRef, Contacts.class)
+                        .build();
 
 
         FirebaseRecyclerAdapter<Contacts,FindFriendsViewHolder> adapter =
@@ -79,7 +79,7 @@ public class FindFriendsActivity extends AppCompatActivity
                             @Override
                             public void onClick(View view)
                             {
-                             String visit_user_id = getRef(position).getKey();
+                                String visit_user_id = getRef(position).getKey();
 
                                 Intent profileIntent = new Intent(FindFriendsActivity.this,ProfileActivity.class);
                                 profileIntent.putExtra("visit_user_id",visit_user_id);
@@ -93,9 +93,9 @@ public class FindFriendsActivity extends AppCompatActivity
                     @Override
                     public FindFriendsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType)
                     {
-                      View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.users_display_layout,viewGroup, false);
-                      FindFriendsViewHolder viewHolder = new FindFriendsViewHolder(view);
-                      return viewHolder;
+                        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.users_display_layout,viewGroup, false);
+                        FindFriendsViewHolder viewHolder = new FindFriendsViewHolder(view);
+                        return viewHolder;
                     }
                 };
 
