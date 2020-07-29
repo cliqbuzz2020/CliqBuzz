@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FindFriendsActivity extends AppCompatActivity
+
 {
     private Toolbar mToolbar;
     private RecyclerView FindFriendsRecyclerList;
@@ -112,7 +113,8 @@ public class FindFriendsActivity extends AppCompatActivity
         CircleImageView profileImage;
 
 
-        public FindFriendsViewHolder(@NonNull View itemView) {
+        public FindFriendsViewHolder(@NonNull View itemView)
+        {
             super(itemView);
 
             userName=itemView.findViewById(R.id.users_profile_name);
