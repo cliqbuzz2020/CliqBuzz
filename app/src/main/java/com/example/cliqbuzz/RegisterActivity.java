@@ -1,8 +1,4 @@
-
 package com.example.cliqbuzz;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +31,8 @@ public class RegisterActivity extends AppCompatActivity
     private ProgressDialog loadingBar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -46,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity
             public void onClick(View view)
             {
              SendUserToLoginActivity();
-
             }
         });
 
@@ -67,12 +66,10 @@ public class RegisterActivity extends AppCompatActivity
         if (TextUtils.isEmpty(email))
         {
             Toast.makeText(this, "Please enter email....", Toast.LENGTH_SHORT).show();
-
         }
         if (TextUtils.isEmpty(password))
         {
             Toast.makeText(this, "Please enter password....", Toast.LENGTH_SHORT).show();
-
         }
         else
         {
