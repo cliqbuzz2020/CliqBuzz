@@ -23,8 +23,12 @@
             android:name=".GroupChatActivity">
         </activity>
         <activity
+
             android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".PhoneLoginActivity" />

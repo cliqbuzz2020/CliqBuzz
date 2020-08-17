@@ -9,10 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
@@ -38,11 +41,12 @@ public class MainActivity extends AppCompatActivity
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
+    private String currentUserID;
 
-    public MainActivity(int cliqBuzz, FirebaseUser currentUser) {
-        CliqBuzz = cliqBuzz;
-        this.currentUser = currentUser;
-    }
+//    public MainActivity(int cliqBuzz, FirebaseUser currentUser) {
+//        CliqBuzz = cliqBuzz;
+//        this.currentUser = currentUser;
+//    }
 
 
     @Override
@@ -62,7 +66,6 @@ public class MainActivity extends AppCompatActivity
 
       
 
-        setSupportActionBar();
         Objects.requireNonNull(getSupportActionBar()).setTitle(CliqBuzz);
 
         ViewPager myViewPager = findViewById(R.id.main_tabs_pager);
@@ -73,11 +76,11 @@ public class MainActivity extends AppCompatActivity
        myTabLayout.setupWithViewPager(myViewPager);
     }
 
-    private void setSupportActionBar(Toolbar mToolbar) {
-    }
-
-    private void setSupportActionBar() {
-    }
+//    private void setSupportActionBar(Toolbar mToolbar) {
+//    }
+//
+//    private void setSupportActionBar() {
+//    }
 
 
     @Override
@@ -90,7 +93,29 @@ public class MainActivity extends AppCompatActivity
         }
         else
         {
+            updateUserStatus("online");
+
             VerifyUserExistance();
+        }
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        if (currentUser != null)
+        {
+            updateUserStatus("offline");
+        }
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        if (currentUser != null)
+        {
+            updateUserStatus("offline");
         }
     }
 
@@ -112,7 +137,8 @@ public class MainActivity extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error)
+            {
 
             }
         });
@@ -226,6 +252,30 @@ public class MainActivity extends AppCompatActivity
     {
         Intent findFriendsIntent = new Intent(MainActivity.this,FindFriendsActivity.class);
         startActivity(findFriendsIntent);
+
+    }
+
+    private void updateUserStatus(String state)
+    {
+        String saveCurrentTime, saveCurrentDate;
+
+        Calendar calendar = Calendar.getInstance();
+
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate = currentDate.format(calendar.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
+        saveCurrentTime = currentTime.format(calendar.getTime());
+
+       HashMap<String, Object> onlineStateMap = new HashMap<>();
+        onlineStateMap.put("time", saveCurrentTime);
+        onlineStateMap.put("date", saveCurrentDate);
+        onlineStateMap.put("state", state);
+
+        currentUserID = mAuth.getCurrentUser().getUid();
+
+        RootRef.child("Users").child(currentUserID).child("userState")
+                .updateChildren(onlineStateMap);
 
     }
 
