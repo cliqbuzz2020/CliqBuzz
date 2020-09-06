@@ -54,8 +54,6 @@ public class FindFriendsActivity extends AppCompatActivity
     @Override
     protected void onStart()
     {
-
-
         super.onStart();
 
         FirebaseRecyclerOptions<Contacts> options =
@@ -99,8 +97,6 @@ public class FindFriendsActivity extends AppCompatActivity
                         return viewHolder;
                     }
                 };
-
-
         FindFriendsRecyclerList.setAdapter(adapter);
 
         adapter.startListening();
@@ -116,7 +112,6 @@ public class FindFriendsActivity extends AppCompatActivity
         public FindFriendsViewHolder(@NonNull View itemView)
         {
             super(itemView);
-
             userName=itemView.findViewById(R.id.users_profile_name);
             userStatus=itemView.findViewById(R.id.users_status);
             profileImage=itemView.findViewById(R.id.users_profile_image);

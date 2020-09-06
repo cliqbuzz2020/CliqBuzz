@@ -10,6 +10,9 @@
     <include
         android:id="@+id/group_chat_bar_layout"
         layout="@layout/app_bar_layout"
+        android:layout_width="420dp"
+        android:layout_height="wrap_content"
+        android:padding="17dp"
         >
 
     </include>

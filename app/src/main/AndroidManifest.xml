@@ -14,21 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ImageViewerActivity"></activity>
         <activity
             android:name=".ChatActivity"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".GroupChatActivity" />
         <activity
-            android:name=".GroupChatActivity">
-        </activity>
-        <activity
-
             android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
-
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".PhoneLoginActivity" />
@@ -46,7 +39,7 @@
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".FindFriendsActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

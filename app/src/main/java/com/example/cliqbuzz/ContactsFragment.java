@@ -107,26 +107,50 @@ public class ContactsFragment extends Fragment
                   @Override
                   public void onDataChange(@NonNull DataSnapshot datasnapshot)
                   {
-                      if (datasnapshot.hasChild("image"))
-                      {
-                          String userImage = datasnapshot.child("image").getValue().toString();
-                          String profileName = datasnapshot.child("name").getValue().toString();
-                          String profileStatus = datasnapshot.child("status").getValue().toString();
+                   if (datasnapshot.exists())
+                   {
+                       if (datasnapshot.child("userState").hasChild("state"))
+                       {
+                           String state = datasnapshot.child("userState").child("state").getValue().toString();
+                           String date = datasnapshot.child("userState").child("date").getValue().toString();
+                           String time = datasnapshot.child("userState").child("time").getValue().toString();
 
-                          holder.userName.setText(profileName);
-                          holder.userStatus.setText(profileStatus);
-                          Picasso.get().load(userImage).placeholder(R.drawable.profile_image).into(holder.profileImage);
-                      }
+                           if (state.equals("online"))
+                           {
+                               holder.onlineIcon.setVisibility(View.VISIBLE);
+                           }
+                           else if (state.equals("offline"))
+                           {
+                               holder.onlineIcon.setVisibility(View.INVISIBLE);
+                           }
+                       }
+                       else
+                       {
+                           holder.onlineIcon.setVisibility(View.INVISIBLE);
+                       }
 
-                      else
-                      {
-                          String profileName = datasnapshot.child("name").getValue().toString();
-                          String profileStatus = datasnapshot.child("status").getValue().toString();
 
-                          holder.userName.setText(profileName);
-                          holder.userStatus.setText(profileStatus);
-                      }
+                       if (datasnapshot.hasChild("image"))
+                       {
+                           String userImage = datasnapshot.child("image").getValue().toString();
+                           String profileName = datasnapshot.child("name").getValue().toString();
+                           String profileStatus = datasnapshot.child("status").getValue().toString();
 
+                           holder.userName.setText(profileName);
+                           holder.userStatus.setText(profileStatus);
+                           Picasso.get().load(userImage).placeholder(R.drawable.profile_image).into(holder.profileImage);
+                       }
+
+                       else
+                       {
+                           String profileName = datasnapshot.child("name").getValue().toString();
+                           String profileStatus = datasnapshot.child("status").getValue().toString();
+
+                           holder.userName.setText(profileName);
+                           holder.userStatus.setText(profileStatus);
+                       }
+
+                   }
                   }
 
                   @Override
@@ -165,6 +189,8 @@ public class ContactsFragment extends Fragment
             userName = itemView.findViewById(R.id.users_profile_name);
             userStatus = itemView.findViewById(R.id.users_status);
             profileImage = itemView.findViewById(R.id.users_profile_image);
+            onlineIcon = (ImageView) itemView.findViewById(R.id.user_online_status);
+
         }
     }
 
